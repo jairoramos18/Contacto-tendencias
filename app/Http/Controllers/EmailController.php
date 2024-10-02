@@ -14,10 +14,10 @@ class EmailController extends Controller
             'body' => ' este es un mensaje de prueba.'
         ];
 
-        $subject = 'buenos dias'; // Cambia estob al nuevo título que desees
+        $subject = 'buenos dias'; 
 
 
-        Mail::to('akleleidy@gmail.com')->send(new WelcomeMail($details,$subject));
+        Mail::to('jairoramosmendez@gmail.com')->send(new WelcomeMail($details,$subject));
 
         return 'Correo enviado jairo ramos';
     }
