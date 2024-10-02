@@ -57,15 +57,15 @@
 
                 <!-- Buttons -->
                 <div class="flex justify-between">
-                    <button type="submit" class="w-full bg-blue-500 text-white rounded-md py-2 px-4 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">Login</button>
-                    <a href="{{ route('register') }}" class="w-full bg-green-500 text-white rounded-md py-2 px-4 ml-3 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50">Register</a>
+                    <button type="submit" class="w-full bg-blue-500 text-white rounded-md py-2 px-4 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">Iniciar Sesión</button>
+                    <a href="{{ route('register') }}" class="w-full bg-green-500 text-white rounded-md py-2 px-4 ml-3 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50">Registrarse</a>
                 </div>
 
                 <!-- Forgot Password Link -->
                 <div class="text-center mt-4">
                     @if (Route::has('password.request'))
                         <a class="text-sm text-gray-500 hover:text-gray-800" href="{{ route('password.request') }}">
-                            {{ __('Forgot Your Password?') }}
+                            {{ __('Olvidaste tu Contraseña?') }}
                         </a>
                     @endif
                 </div>
@@ -74,7 +74,7 @@
         
         <!-- Footer -->
         <div class="mt-8 text-center">
-            <p class="text-sm text-white">© 2024 Jairo Ramos. All rights reserved.</p>
+            <p class="text-sm text-white">© 2024 Jairo Ramos. Todos los derechos reservados.</p>
         </div>
     </div>
 </div>
