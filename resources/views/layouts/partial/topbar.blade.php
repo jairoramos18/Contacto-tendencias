@@ -24,7 +24,7 @@
                 @if (Auth::check())
                     {{ Auth::user()->name }} 
                 @else
-                    Invitado <!-- O puedes mostrar un mensaje alternativo -->
+                   
                 @endif
             </div>
         </div>

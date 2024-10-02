@@ -88,24 +88,20 @@
 
                 <!-- Submit Button -->
                 <div class="flex justify-between">
-                    <button type="submit" class="w-full bg-blue-500 text-white rounded-md py-2 px-4 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
+                    <button type="submit" class="w-full  bg-purple-600 text-white rounded-md py-2 px-4 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
                         <i class="fas fa-user-plus"></i> Registrarse
                     </button>
                 </div>
 
                 <!-- Login Link -->
                 <div class="text-center mt-4">
-                    <a href="{{ route('login') }}" class="text-sm text-gray-500 hover:text-gray-800">
+                    <a href="{{ route('login') }}" class="text-sm text-sky-500 hover:text-gray-800">
                         <i class="fas fa-sign-in-alt"></i> ¿Ya tienes una cuenta? Inicia sesión
                     </a>
                 </div>
             </form>
         </div>
 
-        <!-- Footer -->
-        <div class="mt-8 text-center">
-            <p class="text-sm text-white">© 2024 Jairo Ramos. All rights reserved.</p>
-        </div>
-    </div>
+        
 </div>
 @endsection

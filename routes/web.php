@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\ContactoController;
+use App\Http\Controllers\DashboardController;
 
 // Ruta principal que devuelve la vista de bienvenida
 Route::get('/', function () {
@@ -20,3 +21,5 @@ Route::get('/send-email', [EmailController::class, 'sendWelcomeEmail']);
 
 // Ruta para enviar mensajes de contacto
 Route::post('/contacto/enviar', [ContactoController::class, 'enviarMensaje'])->name('contacto.enviar');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

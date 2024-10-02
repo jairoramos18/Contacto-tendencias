@@ -13,15 +13,14 @@
 
     <div class="relative w-full max-w-md">
         <div class="text-center mb-8">
-            <h1 class="text-4xl font-bold text-white">JAIRO RAMOS</h1>
-            <p class="text-lg text-gray-200">Inicia sesión para continuar</p>
+            
         </div>
         
         <div class="bg-white shadow-lg rounded-lg p-8">
             <form class="space-y-6" method="POST" action="{{ route('login') }}">
                 @csrf
                 
-                <!-- Email Input with Icon on the Right -->
+             
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-700">Correo electrónico</label>
                     <div class="mt-1 relative rounded-md shadow-sm">
@@ -38,7 +37,7 @@
                     </div>
                 </div>
 
-                <!-- Password Input with Icon on the Right -->
+             
                 <div>
                     <label for="password" class="block text-sm font-medium text-gray-700">Contraseña</label>
                     <div class="mt-1 relative rounded-md shadow-sm">
@@ -55,27 +54,23 @@
                     </div>
                 </div>
 
-                <!-- Buttons -->
                 <div class="flex justify-between">
-                    <button type="submit" class="w-full bg-blue-500 text-white rounded-md py-2 px-4 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">Iniciar Sesión</button>
-                    <a href="{{ route('register') }}" class="w-full bg-green-500 text-white rounded-md py-2 px-4 ml-3 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50">Registrarse</a>
+                    <button type="submit" class="w-full bg-purple-700 text-white rounded-md py-2 px-4 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">Iniciar Sesion</button>
+                    <a href="{{ route('register') }}" class="w-full  bg-teal-500 text-white rounded-md py-2 px-4 ml-3 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50">Registrarse</a>
                 </div>
 
-                <!-- Forgot Password Link -->
+                
                 <div class="text-center mt-4">
                     @if (Route::has('password.request'))
                         <a class="text-sm text-gray-500 hover:text-gray-800" href="{{ route('password.request') }}">
-                            {{ __('Olvidaste tu Contraseña?') }}
+                            {{ __('Olvidaste Tu Contraseña?') }}
                         </a>
                     @endif
                 </div>
             </form>
         </div>
-        
-        <!-- Footer -->
-        <div class="mt-8 text-center">
-            <p class="text-sm text-white">© 2024 Jairo Ramos. Todos los derechos reservados.</p>
-        </div>
+    
+      
     </div>
 </div>
 @endsection
