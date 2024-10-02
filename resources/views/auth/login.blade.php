@@ -2,72 +2,79 @@
 
 @section('content')
 <head>
-    <!-- Otras referencias como Bootstrap, CSS personalizado, etc. -->
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-   
 </head>
-<div class="hold-transition login-page">
-    <div class="login-box">
-        <div class="login-logo">
-            <a href="../../index2.html"><b>Proyecto</b></a>
+
+<div class="relative min-h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/1054218/pexels-photo-1054218.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');">
+    <div class="absolute inset-0 bg-black opacity-60"></div> <!-- Overlay para oscurecer el fondo -->
+
+    <div class="relative w-full max-w-md">
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-white">JAIRO RAMOS</h1>
+            <p class="text-lg text-gray-200">Inicia sesión para continuar</p>
         </div>
-        <div class="card">
-            <div class="card-body login-card-body">
-                <p class="login-box-msg">Inicia sesión para continuar</p>
-
-                <form class="carta" method="POST" action="{{ route('login') }}">
-                    @csrf
-                    <div class="input-group mb-3">
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                            name="email" value="{{ old('email') }}" required autocomplete="email" autofocus
-                            placeholder="Correo electrónico">
+        
+        <div class="bg-white shadow-lg rounded-lg p-8">
+            <form class="space-y-6" method="POST" action="{{ route('login') }}">
+                @csrf
+                
+                <!-- Email Input with Icon on the Right -->
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Correo electrónico</label>
+                    <div class="mt-1 relative rounded-md shadow-sm">
+                        <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus
+                               class="form-input block w-full pr-10 px-3 py-2 border border-gray-300 rounded-md shadow-sm 
+                               focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" 
+                               placeholder="Correo electrónico">
+                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                            <i class="fas fa-envelope text-gray-400"></i>
+                        </div>
                         @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                            <span class="text-red-500 text-sm mt-2">{{ $message }}</span>
                         @enderror
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
-                            </div>
-                        </div>
                     </div>
-                    <div class="input-group mb-3">
-                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
-                            name="password" required autocomplete="current-password" placeholder="Contraseña">
+                </div>
+
+                <!-- Password Input with Icon on the Right -->
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700">Contraseña</label>
+                    <div class="mt-1 relative rounded-md shadow-sm">
+                        <input id="password" type="password" name="password" required
+                               class="form-input block w-full pr-10 px-3 py-2 border border-gray-300 rounded-md shadow-sm 
+                               focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" 
+                               placeholder="Contraseña">
+                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                            <i class="fas fa-lock text-gray-400"></i>
+                        </div>
                         @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                            <span class="text-red-500 text-sm mt-2">{{ $message }}</span>
                         @enderror
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
                     </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <button type="submit" class="btn btn-primary btn-block">{{ __('Login') }}</button>
-                        </div>
-                        <div class="col-6">
-                            <a href="{{ route('register') }}" class="btn btn-success btn-block">{{ __('Register') }}</a>
-                        </div>
-                    </div>
+                </div>
 
-                    <div class="row">
-                        <div class="col-12">
-                            <p class="mb-1 mt-2">
-                                @if (Route::has('password.request'))
-                                    <a href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
-                                @endif
-                            </p>
-                        </div>
-                    </div>
+                <!-- Buttons -->
+                <div class="flex justify-between">
+                    <button type="submit" class="w-full bg-blue-500 text-white rounded-md py-2 px-4 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">Login</button>
+                    <a href="{{ route('register') }}" class="w-full bg-green-500 text-white rounded-md py-2 px-4 ml-3 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50">Register</a>
+                </div>
 
-                </form>
-            </div>
+                <!-- Forgot Password Link -->
+                <div class="text-center mt-4">
+                    @if (Route::has('password.request'))
+                        <a class="text-sm text-gray-500 hover:text-gray-800" href="{{ route('password.request') }}">
+                            {{ __('Forgot Your Password?') }}
+                        </a>
+                    @endif
+                </div>
+            </form>
+        </div>
+        
+        <!-- Footer -->
+        <div class="mt-8 text-center">
+            <p class="text-sm text-white">© 2024 Jairo Ramos. All rights reserved.</p>
         </div>
     </div>
 </div>

@@ -1,93 +1,111 @@
 @extends('layouts.applogin')
+
 @section('content')
 <head>
-    <!-- Otras referencias como Bootstrap, CSS personalizado, etc. -->
-     <!-- Font Awesome -->
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
-<div class="hold-transition login-page">
-<div class="login-box">
-    <div class="card">
-        <div class="login-logo">
-            <p>Register</p>
+
+<div class="relative min-h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/1261728/pexels-photo-1261728.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');">
+    <div class="absolute inset-0 bg-black opacity-60"></div> <!-- Overlay para oscurecer el fondo -->
+
+    <div class="relative w-full max-w-md">
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-white">Registro</h1>
+            <p class="text-lg text-gray-200">Crea una cuenta para comenzar</p>
         </div>
-        <div class="card-body login-card-body">
-            <form method="POST" action="{{ route('register') }}">
+
+        <div class="bg-white shadow-lg rounded-lg p-8">
+            <form class="space-y-6" method="POST" action="{{ route('register') }}">
                 @csrf
 
-                <!-- Name Input -->
-                <div class="input-group mb-3">
-                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Full Name">
-                    @error('name')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-user"></span>
+                <!-- Name Input with Icon -->
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700">Nombre completo</label>
+                    <div class="mt-1 relative rounded-md shadow-sm">
+                        <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus
+                               class="form-input block w-full pr-10 px-3 py-2 border border-gray-300 rounded-md shadow-sm 
+                               focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" 
+                               placeholder="Nombre completo">
+                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                            <i class="fas fa-user text-gray-400"></i>
+                        </div>
+                        @error('name')
+                            <span class="text-red-500 text-sm mt-2">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+
+                <!-- Email Input with Icon -->
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Correo electrónico</label>
+                    <div class="mt-1 relative rounded-md shadow-sm">
+                        <input id="email" type="email" name="email" value="{{ old('email') }}" required
+                               class="form-input block w-full pr-10 px-3 py-2 border border-gray-300 rounded-md shadow-sm 
+                               focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" 
+                               placeholder="Correo electrónico">
+                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                            <i class="fas fa-envelope text-gray-400"></i>
+                        </div>
+                        @error('email')
+                            <span class="text-red-500 text-sm mt-2">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+
+                <!-- Password Input with Icon -->
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700">Contraseña</label>
+                    <div class="mt-1 relative rounded-md shadow-sm">
+                        <input id="password" type="password" name="password" required
+                               class="form-input block w-full pr-10 px-3 py-2 border border-gray-300 rounded-md shadow-sm 
+                               focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" 
+                               placeholder="Contraseña">
+                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                            <i class="fas fa-lock text-gray-400"></i>
+                        </div>
+                        @error('password')
+                            <span class="text-red-500 text-sm mt-2">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+
+                <!-- Confirm Password Input with Icon -->
+                <div>
+                    <label for="password-confirm" class="block text-sm font-medium text-gray-700">Confirmar contraseña</label>
+                    <div class="mt-1 relative rounded-md shadow-sm">
+                        <input id="password-confirm" type="password" name="password_confirmation" required
+                               class="form-input block w-full pr-10 px-3 py-2 border border-gray-300 rounded-md shadow-sm 
+                               focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" 
+                               placeholder="Confirmar contraseña">
+                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                            <i class="fas fa-lock text-gray-400"></i>
                         </div>
                     </div>
                 </div>
 
-                <!-- Email Input -->
-                <div class="input-group mb-3">
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email Address">
-                    @error('email')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-envelope"></span>
-                        </div>
-                    </div>
+                <!-- Submit Button -->
+                <div class="flex justify-between">
+                    <button type="submit" class="w-full bg-blue-500 text-white rounded-md py-2 px-4 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
+                        <i class="fas fa-user-plus"></i> Registrarse
+                    </button>
                 </div>
 
-                <!-- Password Input -->
-                <div class="input-group mb-3">
-                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password">
-                    @error('password')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Confirm Password Input -->
-                <div class="input-group mb-3">
-                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Submit and Login Links -->
-                <div class="row">
-                    <div class="col-6">
-                        <button type="submit" class="btn btn-primary btn-block">
-                            <span class="fas fa-user-plus"></span> Registrarse
-                        </button>
-                    </div>
-                    <div class="col-6">
-                        <a href="{{ route('login') }}" class="btn btn-success btn-block">
-                            <span class="fas fa-sign-in-alt"></span> Ya tengo una cuenta
-                        </a>
-                    </div>
+                <!-- Login Link -->
+                <div class="text-center mt-4">
+                    <a href="{{ route('login') }}" class="text-sm text-gray-500 hover:text-gray-800">
+                        <i class="fas fa-sign-in-alt"></i> ¿Ya tienes una cuenta? Inicia sesión
+                    </a>
                 </div>
             </form>
         </div>
+
+        <!-- Footer -->
+        <div class="mt-8 text-center">
+            <p class="text-sm text-white">© 2024 Jairo Ramos. All rights reserved.</p>
+        </div>
     </div>
 </div>
-</div>
-
-
 @endsection
