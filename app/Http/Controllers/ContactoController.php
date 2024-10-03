@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contacto; // Asegúrate de incluir el modelo Contacto
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -27,18 +28,24 @@ class ContactoController extends Controller
                 ->from('jaramosm@ufpso.edu.co', $request->nombre_usuario); // De quién envía
         });
 
-        // Redirige de nuevo con mensaje de éxito y datos del formulario
-        return back()
-        ->withInput()
-        ->with('success', 'Tu mensaje ha sido enviado.')
-        ->with('pais', $request->pais) // Asegúrate de incluir esto
-        ->with([
-            'nombre' => $request->nombre_usuario,
+        // Guardar el contacto en la base de datos
+        Contacto::create([
+            'nombre_usuario' => $request->nombre_usuario,
             'email' => $request->email,
-            'celular' => $request->celular,
-            'direccion' => $request->direccion,
             'asunto' => $request->asunto,
             'mensaje' => $request->mensaje,
+            'celular' => $request->celular,
         ]);
+
+        return back()->withInput()->with('success', 'Tu mensaje ha sido enviado.')
+                 ->with([
+                     'direccion' => $request->direccion,
+                     'celular' => $request->celular,
+                     'email' => $request->email,
+                     'pais' => $request->pais,
+                 ]);
+
+
     }
 }
+

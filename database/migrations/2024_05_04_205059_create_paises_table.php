@@ -13,6 +13,7 @@ class CreatePaisesTable extends Migration
             $table->string('nombre');
             $table->string('estado');
             $table->string('registradopor');
+            $table->unique(['nombre', 'estado']);
             $table->timestamps();
         });
     }

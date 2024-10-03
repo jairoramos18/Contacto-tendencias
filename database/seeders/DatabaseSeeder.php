@@ -4,8 +4,10 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Pais;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Contacto;
+use App\Models\Empresa;
+use App\Models\Ciudad;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,14 +16,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-          User::factory(1)->create();
+        // Crea un usuario y guarda la instancia
+        $user = User::factory()->create();
 
-            // Pais::factory(10)->create();
+        // Crea un país asignando el usuario previamente creado
+        Pais::factory()->create([
+            'nombre' => 'Colombia', 
+            'estado' => '1',
+            'registradopor' => $user->id, 
+        ]);
 
-         Pais::factory()->create([
-             'nombre' => 'Colombia', 
-             'estado' => '1',
-             'registradopor' => \App\Models\User::factory()
-         ]);
+        Contacto::factory()->count(2)->create();
+        Empresa::factory()->count(2)->create();
     }
 }
