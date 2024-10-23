@@ -16,6 +16,7 @@ class ContactoFactory extends Factory
             'asunto' => $this->faker->sentence(),
             'mensaje' => $this->faker->paragraph(),
             'celular' => $this->faker->phoneNumber(),
+            'estado' => $this->faker->randomElement(['activo', 'inactivo']), // Se añade el campo estado
         ];
     }
 }

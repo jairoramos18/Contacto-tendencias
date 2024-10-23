@@ -8,6 +8,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Contacto;
 use App\Models\Empresa;
 use App\Models\Ciudad;
+use App\Models\Tipodocumento;
 
 class DatabaseSeeder extends Seeder
 {
@@ -28,5 +29,6 @@ class DatabaseSeeder extends Seeder
 
         Contacto::factory()->count(2)->create();
         Empresa::factory()->count(2)->create();
+        Tipodocumento::factory()->count(10)->create();
     }
 }

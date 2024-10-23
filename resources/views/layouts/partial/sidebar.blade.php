@@ -8,14 +8,20 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
-        </div>
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="image">
+                    @php
+                        $userPhotoPath = 'uploads/users/' . Auth::user()->photo;
+                    @endphp
+                    @if (!empty(Auth::user()->photo) && file_exists(public_path($userPhotoPath)))
+                        <img class="img-circle elevation-2" src="{{ asset($userPhotoPath) }}" alt="{{ Auth::user()->name }}">
+                    @else
+                        <img src="{{ asset('backend/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="">
+                    @endif
+          </div>
+          <div class="info" style="color:#6c757d">
+            {{ Auth::user()->name }}
+          </div>
       </div>
 
       <!-- SidebarSearch Form -->
@@ -31,39 +37,82 @@
       </div>
 
       <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Dashboard
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v1</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v2</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v3</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+     <!-- Sidebar Menu -->
+<nav class="mt-2">
+  <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+    <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
+    <li class="nav-item menu-open">
+      <a href="#" class="nav-link active">
+        <i class="nav-icon fas fa-tachometer-alt"></i>
+        <p>
+          Contactos
+          <i class="right fas fa-angle-left"></i>
+        </p>
+      </a>
+      <ul class="nav nav-treeview">
+        <li class="nav-item">
+          <a href="{{ route('contactos.index') }}" class="nav-link active">
+            <i class="far fa-circle nav-icon"></i>
+            <p>Contactanos</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('empresas.index') }}" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+            <p>Empresas</p>
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+
+<nav class="mt-2">
+  <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+    <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
+    <li class="nav-item menu-open">
+      <a href="#" class="nav-link active">
+        <i class="nav-icon fas fa-tachometer-alt"></i>
+        <p>
+          Pais
+          <i class="right fas fa-angle-left"></i>
+        </p>
+      </a>
+      <ul class="nav nav-treeview">
+        <li class="nav-item">
+          <a href="{{ route('paises.index') }}" class="nav-link active">
+            <i class="far fa-circle nav-icon"></i>
+            <p>Pais</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('departamentos.index') }}" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+            <p>Departamento</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('ciudads.index') }}" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+            <p>Ciudad</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('tipodocumentos.index') }}" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+            <p>Tipodocumento</p>
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
           <li class="nav-item">
             <a href="pages/widgets.html" class="nav-link">
               <i class="nav-icon fas fa-th"></i>

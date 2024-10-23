@@ -1,5 +1,7 @@
 @extends('layouts.applogin')
 
+@section('title', 'Login')
+
 @section('content')
 <head>
     <!-- Tailwind CSS -->
@@ -8,8 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 
-<div class="relative min-h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/1054218/pexels-photo-1054218.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');">
-    <div class="absolute inset-0 bg-black opacity-60"></div> <!-- Overlay para oscurecer el fondo -->
+
+<div class="relative w-full h-screen flex items-center justify-center bg-cover bg-center " style="background-image: url('https://images.pexels.com/photos/1054218/pexels-photo-1054218.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');">
+    <div class="absolute inset-0 bg-black opacity-60"></div> 
 
     <div class="relative w-full max-w-md">
         <div class="text-center mb-8">

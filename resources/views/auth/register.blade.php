@@ -1,6 +1,7 @@
 @extends('layouts.applogin')
 
 @section('content')
+
 <head>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -8,20 +9,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 
-<div class="relative min-h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/1261728/pexels-photo-1261728.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');">
-    <div class="absolute inset-0 bg-black opacity-60"></div> <!-- Overlay para oscurecer el fondo -->
+<body>
 
-    <div class="relative w-full max-w-md">
+    <!-- Contenedor principal -->
+    <div class="relative w-full h-screen flex items-center justify-center bg-cover bg-center  "  style="background-image: url('https://images.pexels.com/photos/1261728/pexels-photo-1261728.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');"</div>>
+
+    <!-- Overlay oscuro -->
+    <div class="absolute inset-0 bg-black opacity-60"></div> 
+
+    <!-- Contenedor del formulario -->
+    <div class="relative w-full max-w-md z-10"> 
         <div class="text-center mb-8">
             <h1 class="text-4xl font-bold text-white">Registro</h1>
             <p class="text-lg text-gray-200">Crea una cuenta para comenzar</p>
         </div>
 
+        <!-- Formulario -->
         <div class="bg-white shadow-lg rounded-lg p-8">
             <form class="space-y-6" method="POST" action="{{ route('register') }}">
                 @csrf
 
-                <!-- Name Input with Icon -->
+                <!-- Nombre completo -->
                 <div>
                     <label for="name" class="block text-sm font-medium text-gray-700">Nombre completo</label>
                     <div class="mt-1 relative rounded-md shadow-sm">
@@ -38,7 +46,7 @@
                     </div>
                 </div>
 
-                <!-- Email Input with Icon -->
+                <!-- Correo electrónico -->
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-700">Correo electrónico</label>
                     <div class="mt-1 relative rounded-md shadow-sm">
@@ -55,7 +63,7 @@
                     </div>
                 </div>
 
-                <!-- Password Input with Icon -->
+                <!-- Contraseña -->
                 <div>
                     <label for="password" class="block text-sm font-medium text-gray-700">Contraseña</label>
                     <div class="mt-1 relative rounded-md shadow-sm">
@@ -72,7 +80,7 @@
                     </div>
                 </div>
 
-                <!-- Confirm Password Input with Icon -->
+                <!-- Confirmar contraseña -->
                 <div>
                     <label for="password-confirm" class="block text-sm font-medium text-gray-700">Confirmar contraseña</label>
                     <div class="mt-1 relative rounded-md shadow-sm">
@@ -86,14 +94,14 @@
                     </div>
                 </div>
 
-                <!-- Submit Button -->
+                <!-- Botón de registro -->
                 <div class="flex justify-between">
-                    <button type="submit" class="w-full  bg-purple-600 text-white rounded-md py-2 px-4 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
+                    <button type="submit" class="w-full bg-purple-600 text-white rounded-md py-2 px-4 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
                         <i class="fas fa-user-plus"></i> Registrarse
                     </button>
                 </div>
 
-                <!-- Login Link -->
+                <!-- Enlace a iniciar sesión -->
                 <div class="text-center mt-4">
                     <a href="{{ route('login') }}" class="text-sm text-sky-500 hover:text-gray-800">
                         <i class="fas fa-sign-in-alt"></i> ¿Ya tienes una cuenta? Inicia sesión
@@ -101,7 +109,10 @@
                 </div>
             </form>
         </div>
-
-        
+    </div>
 </div>
+
+
+</body>
+
 @endsection

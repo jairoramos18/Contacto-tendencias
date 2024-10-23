@@ -18,6 +18,11 @@ class Ciudad extends Model
         'departamento_id',  // Asegúrate de incluir el departamento_id para la relación
     ];
 
+    protected $guarded = [
+        'estado','registradopor',
+    ];
+
+
     public function empresas()
     {
         return $this->hasMany(Empresa::class);
@@ -25,6 +30,11 @@ class Ciudad extends Model
 
     public function departamento()
     {
-        return $this->belongsTo(Departamento::class, 'departamento_id'); // Define la relación con Departamento
+        return $this->belongsTo('App\Models\Departamento');
+    }
+
+    public function personas()
+    {
+        return $this->hasMany('App\Models\Persona', 'ciudad_id');
     }
 }

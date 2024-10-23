@@ -17,7 +17,7 @@ return new class extends Migration
                 // Hacer que departamento_id sea nullable
                 $table->bigInteger('departamento_id')->unsigned()->nullable(); 
                 $table->string('nombre');
-                $table->string('estado')->default('activo');
+                $table->string('estado')->default(value: 'activo');
                 $table->string('registradopor');
                 $table->timestamps();
                 

@@ -18,6 +18,10 @@ class Pais extends Model
         'registradopor',
     ];
 
+    protected $guarded = [
+        'estado','registradopor',
+    ];
+
     
     public function departamentos()
     {
